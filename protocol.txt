@@ -1,0 +1,47 @@
+Protocol from project
+
+Self-assessment
+---------------
+
+Please leave only one of the four status codes for each task, followed by an optional note
+
+I've changed my plan a little bit because I didn't know how I would assess how good a player really is and what combination
+of good players is the best and I found a library called streamlit that is used nowadays for data science websites, so I 
+wanted to give it a try.
+
+
+Submitted files:
+-----------------
+
+https://github.com/lukatko/nba_stats
+The website is deployed here: https://lukatko-nba-stats-main-page-yx0xt2.streamlit.app/
+
+
+Commands used with short comments:
+----------------------------------------
+
+I used pip to install some libraries.
+Also used standard git commands to get it on github.
+All the code used to create the website is in the files on github.
+
+Results, discussion:
+--------------------
+
+Some of the observed results are described on the website. I also trained an xgboost model for classification. It is not optimal
+because I didn't have a large dataset (I could get a bigger one, but I would have to aggregate more files, since I couldn't find
+one that contained players from more seasons and I was running out of time). Next thing to note is that I didn't fine-tune the 
+model as I was running out of time and I also just used 15% of data for my test set as I only had like 260 rows (I filtered
+out players who didn't even play much).
+
+
+List of resources:
+------------------
+
+List webpages and other resources used to solve these tasks.
+Do not list the course website and the resources recommended directly in the assignment.
+
+https://docs.streamlit.io/
+https://xgboost.readthedocs.io/en/stable/
+https://plotly.com/python/
+stackoverflow.com
+datasets: https://www.kaggle.com/datasets/wyattowalsh/basketball, https://www.kaggle.com/datasets/vivovinco/nba-player-stats
