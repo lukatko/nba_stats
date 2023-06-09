@@ -118,20 +118,24 @@ le = preprocessing.LabelEncoder()
 X = player_data.drop("Pos", axis=1)
 le.fit(player_data["Pos"])
 y = le.transform(player_data["Pos"])
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42, test_size=0.15)
 tr = st.text("Training...")
-xgb_clf = xgb.XGBClassifier(objective='multi:softmax', 
-                            num_class=5, 
-                            early_stopping_rounds=10, 
-                            seed=42,
-                            learning_rate=0.05,
-                            colsample_bytree=0.8)
-xgb_clf.fit(X_train, 
-            y_train,
-            verbose=1,
-            eval_set=[(X_train, y_train), (X_test, y_test)])
 
+@st.cache_data
+def train():
+    xgb_clf = xgb.XGBClassifier(objective='multi:softmax', 
+                                num_class=5, 
+                                early_stopping_rounds=10, 
+                                seed=42,
+                                learning_rate=0.05,
+                                colsample_bytree=0.8)
+    xgb_clf.fit(X_train, 
+                y_train,
+                verbose=1,
+                eval_set=[(X_train, y_train), (X_test, y_test)])
+    return xgb_clf
+
+xgb_clf = train()
 y_pred = xgb_clf.predict(X_test)
 tr.text('')
 st.write("Accuracy on test set is:", accuracy_score(y_test, y_pred))
